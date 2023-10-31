@@ -7,7 +7,7 @@ from .utilities import fetch_user
 
 login_view = Blueprint('login_view', __name__, url_prefix='/login')
 
-@login_view.route('/login', methods=['GET', 'POST'])
+@login_view.route('/login', methods=['POST'])
 def login(username, password):
     """return the login view or the journals area depending on the rquest type"""
     if request.method == 'POST':
@@ -25,8 +25,7 @@ def login(username, password):
         if not error:
             session.clear()
             session['user_id'] = user.id
-            return redirect(url_for('journal_area'))
+            return redirect(url_for('journal_area', username=user.username))
 
-        return error
+        return {'Error': 'There was an error'}
 
-    return render_template('login.html')
