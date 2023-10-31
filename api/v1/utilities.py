@@ -12,7 +12,7 @@ def fetch_user(username_email):
 
     Returns (object): a user object, or None if user doesn't exist
     """
-    all_users = storage.all('User') #storage.all return a list of dicts
+    all_users = storage.all('User') #storage.all returns a list of dict of dicts
 
     found = None
     for user in all_users:

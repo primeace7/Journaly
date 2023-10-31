@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Implementation of all views that support the journaly app"""
+"""Implementation a status view for checking the status of the API service"""
 
 from flask import Blueprint
 
