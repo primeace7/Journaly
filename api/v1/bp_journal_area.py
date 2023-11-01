@@ -3,7 +3,7 @@
    the current month and can make new entries"""
 
 from flask import request, g, Blueprint, redirect, url_for
-from . import storage
+from .utilities import storage
 from datetime import timedelta, datetime, timezone
 
 journal_area_view = Blueprint('journal_area_view', __name__)

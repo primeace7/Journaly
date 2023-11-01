@@ -2,7 +2,7 @@
 """Implement the all_entries, where a user sees all their entries so far"""
 
 from flask import request, g, Blueprint, redirect, url_for
-from . import storage
+from .utilities import storage
 
 all_entries_view = Blueprint('all_entries_view', __name__)
 

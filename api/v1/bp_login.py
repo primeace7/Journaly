@@ -9,14 +9,15 @@ login_view = Blueprint('login_view', __name__, url_prefix='/login')
 
 @login_view.route('/login', methods=['POST'])
 def login(username, password):
-    """return the login view or the journals area depending on the rquest type"""
+    """return the login view or the journals area
+    depending on the rquest type"""
     if request.method == 'POST':
         data = request.json
-        username_email = data['username']
+        username_email = data['username_email']
         password = data['password']
         error = None
 
-        user = fetch_user(username) #fetch the user from database
+        user = fetch_user(username_email) #fetch the user from database
         if not user:
             error = {'Error': 'Invalid username or email'}, 401
         elif not check_password_hash(user.password, password): 
