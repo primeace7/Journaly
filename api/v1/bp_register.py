@@ -15,7 +15,7 @@ def register():
         #400 is HTTP status code for bad request
         error = {'Error': 'Invalid data'}, 400
         return error
-        
+
     if request.method == 'POST' and data:
         username = data['username']
         if not username:
@@ -25,7 +25,7 @@ def register():
             # 405 is HTTP status code for Method not allowed
             error = {'Error': 'Username is unvavailable'}, 405
             return error
-    
+
         email = data['email']
         if not email:
             error = {'Error': 'Email is required'}, 400
@@ -33,12 +33,12 @@ def register():
         elif not validate_email(email):
             error = {'Error': 'Email is already in use'}, 400
             return error
-        
+
         password = data['password']
         if not password:
             error = {'Error': 'Password is required'}, 400
             return error
-        
+
         firstname = data['firstname']
         if not firstname:
             error = {'Error': 'Firstname is required'}, 400
@@ -46,7 +46,7 @@ def register():
 
         create_user(data)
         return redirect(url_for('login'))
-    
+
     return {'Error': 'There was an error'}, 400
 
 
@@ -62,7 +62,7 @@ def create_user(data):
 def validate_username(username):
     """check if a username already exists in the database"""
     from .utilities import storage
-    
+
     all_users = storage.all('User')
     all_usersnames = [key.username for key in all_users[0].keys()]
 

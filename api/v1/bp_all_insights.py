@@ -2,7 +2,7 @@
 """Implement the all_insights view, where a user sees all
 their insights so far"""
 
-from flask import request, g, Blueprint, redirect, url_for
+from flask import g, Blueprint, redirect, url_for
 from .utilities import storage
 
 all_insights_view = Blueprint('all_insights_view', __name__)
@@ -26,7 +26,12 @@ def all_insights(username):
 
 def segment_insights(insight_objs):
     """Segment a list of insight objects into a dict structure of the form:
-    {'Year': {'Month': [{insight object as dict},{insight object as dict} ...]}}"""
+    {
+        'Year': {
+            'Month': [{insight object as dict},
+            {insight object as dict} ...]
+        }
+    }"""
 
     segmented = {}
 

@@ -31,7 +31,7 @@ def journal_area(username):
         latest_entry = storage.all_user_entries(g.user.id)
         latest_entry_dict = list(latest_entry.values())[0]
         storage.close()
-        return latest_entry_dict
+        return latest_entry_dict.to_dict()
 
     elif request.method == 'PATCH':
         data = request.json
@@ -45,6 +45,7 @@ def journal_area(username):
         data = request.json
         entry_to_delete = list(storage.get('Entries', data['id']))[0]
         storage.delete(entry_to_delete)
+        storage.save()
         storage.close()
 
 

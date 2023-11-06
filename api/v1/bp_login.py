@@ -7,8 +7,8 @@ from .utilities import fetch_user
 
 login_view = Blueprint('login_view', __name__, url_prefix='/login')
 
-@login_view.route('/login', methods=['POST'])
-def login(username, password):
+@login_view.route('/', methods=['POST'])
+def login():
     """return the login view or the journals area
     depending on the rquest type"""
     if request.method == 'POST':
@@ -20,7 +20,7 @@ def login(username, password):
         user = fetch_user(username_email) #fetch the user from database
         if not user:
             error = {'Error': 'Invalid username or email'}, 401
-        elif not check_password_hash(user.password, password): 
+        elif not check_password_hash(user.password, password):
             error = {'Error': 'Invalid password'}, 401
 
         if not error:
@@ -28,5 +28,4 @@ def login(username, password):
             session['user_id'] = user.id
             return redirect(url_for('journal_area', username=user.username))
 
-        return {'Error': 'There was an error'}
-
+        return {'Error': 'There was an error'}, 405
