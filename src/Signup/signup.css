@@ -1,0 +1,80 @@
+.signup-container {
+    margin-top: 10px;
+    width: 400px;
+    margin: 0 auto;
+    padding: 50px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+  }
+  
+  .signup-header{
+    text-align: center;
+  }
+  
+  .input-con {
+    margin: 10px 0;
+  }
+  
+  .signup-container label {
+    display: block;
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  
+  .signup-container input[type="text"],
+  .signup-container input[type="email"],
+  .signup-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .username-availability {
+    font-size: 14px;
+  }
+  
+  .username-availability.available {
+    color: green;
+  }
+  
+  .username-availability.not-available {
+    color: red;
+  }
+
+  .submit-button {
+    background-color: #3498db; /* Button background color */
+    color: #fff; /* Text color */
+    padding: 10px 20px; /* Padding around the text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Show a hand cursor on hover */
+    font-size: 16px; /* Text size */
+  }
+  
+  .submit-button:hover {
+    background-color: #258cd1; /* Color change on hover */
+  }
+  
+  /* You can add more styling to customize the button's appearance further. */
+  
+  @media screen and (max-width: 480px) {
+    .signup-container {
+      max-width: 85%; /* Adjust the container width for smaller screens */
+      padding: 5px;
+    }
+
+    .signup-container input[type="text"],
+  .signup-container input[type="email"],
+  .signup-container input[type="password"] {
+    width: 80%;
+    padding: 10px;
+    margin-left: 10px;
+  }
+    
+    .submit-button {
+        margin-top: 10px;
+      width: 100%; /* Make the button full-width on smaller screens */
+    }
+  }
