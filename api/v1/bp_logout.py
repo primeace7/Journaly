@@ -3,9 +3,9 @@
 
 from flask import redirect, g, session, Blueprint
 
-logout_view = Blueprint('logout_view', __name__, url_prefix='/logout')
+logout_handler = Blueprint('logout_view', __name__, url_prefix='/logout')
 
-@logout_view.route('/', methods=['GET'])
+@logout_handler.route('/', methods=['GET'])
 def logout():
     """log the user out and return the login view"""
     session.clear()

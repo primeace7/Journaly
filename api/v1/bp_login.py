@@ -5,9 +5,9 @@ from flask import request, render_template, g, session, Blueprint
 from werkzeug.security import check_password_hash
 from .utilities import fetch_user
 
-login_view = Blueprint('login_view', __name__, url_prefix='/login')
+login_handler = Blueprint('login_view', __name__, url_prefix='/login')
 
-@login_view.route('/', methods=['POST'])
+@login_handler.route('/', methods=['POST'])
 def login():
     """return the login view or the journals area
     depending on the rquest type"""

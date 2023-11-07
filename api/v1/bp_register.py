@@ -4,9 +4,9 @@
 from flask import Blueprint, request, flash, redirect, url_for
 from werkzeug.security import generate_password_hash
 
-register_view = Blueprint('register_view', __name__, url_prefix='/register')
+register_handler = Blueprint('register_view', __name__, url_prefix='/register')
 
-@register_view.route('/', methods=['POST'])
+@register_handler.route('/', methods=['POST'])
 def register():
     """The register view-handler"""
     error = None

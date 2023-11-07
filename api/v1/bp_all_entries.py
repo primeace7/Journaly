@@ -4,9 +4,9 @@
 from flask import g, Blueprint, redirect, url_for
 from .utilities import storage
 
-all_entries_view = Blueprint('all_entries_view', __name__)
+all_entries_handler = Blueprint('all_entries_view', __name__)
 
-@all_entries_view.route('/<username>/all-entries')
+@all_entries_handler.route('/<username>/all-entries')
 
 def all_entries(username):
     """Handle the all-entries view of the application where users can

@@ -6,9 +6,9 @@ from flask import request, g, session, Blueprint
 from werkzeug.security import check_password_hash, generate_password_hash
 from .utilities import fetch_user
 
-update_user_view = Blueprint('update_user_view', __name__)
+update_user_handler = Blueprint('update_user_view', __name__)
 
-@update_user_view.route('/<username>', methods=['PATCH'])
+@update_user_handler.route('/<username>', methods=['PATCH'])
 def update_user(username):
     """update a user's data"""
     if not g.user:

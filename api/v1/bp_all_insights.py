@@ -5,9 +5,9 @@ their insights so far"""
 from flask import g, Blueprint, redirect, url_for
 from .utilities import storage
 
-all_insights_view = Blueprint('all_insights_view', __name__)
+all_insights_handler = Blueprint('all_insights_view', __name__)
 
-@all_insights_view.route('/<username>/all-insights')
+@all_insights_handler.route('/<username>/all-insights')
 
 def all_insights(username):
     """Handle the all-insights view of the application where users can

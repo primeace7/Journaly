@@ -6,9 +6,9 @@ from flask import request, g, Blueprint, redirect, url_for
 from .utilities import storage
 from datetime import timedelta, datetime, timezone
 
-journal_area_view = Blueprint('journal_area_view', __name__)
+journal_area_handler = Blueprint('journal_area_view', __name__)
 
-@journal_area_view.route('/<username>/entries',
+@journal_area_handler.route('/<username>/entries',
                          methods=['GET', 'POST', 'PATCH', 'DELETE'])
 
 def journal_area(username):
