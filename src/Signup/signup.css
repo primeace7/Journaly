@@ -1,8 +1,8 @@
 .signup-container {
-    margin-top: 10px;
+    margin-top: 30px;
     width: 400px;
-    margin: 0 auto;
-    padding: 50px;
+    margin-left: 30%;
+    padding: 60px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background: #f9f9f9;
@@ -61,8 +61,13 @@
   
   @media screen and (max-width: 480px) {
     .signup-container {
-      max-width: 85%; /* Adjust the container width for smaller screens */
-      padding: 5px;
+      margin-top: 30px;
+    width: 220px;
+    margin-left: 10%;
+    padding: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
     }
 
     .signup-container input[type="text"],
@@ -75,6 +80,6 @@
     
     .submit-button {
         margin-top: 10px;
-      width: 100%; /* Make the button full-width on smaller screens */
+      width: 80%; /* Make the button full-width on smaller screens */
     }
   }

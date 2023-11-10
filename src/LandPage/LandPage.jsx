@@ -11,12 +11,11 @@ export default function LandPage() {
   };
 
   const handleLearnMore = () => {
-    navigate('/journal'); // Navigate to the '/faq' page
+    navigate('/about'); // Navigate to the '/faq' page
   };
   return (
-    <>
+    <div className='landpage_con'>
     <Navbar/>
-
         <p className='content-text'>
         A journal is a record of events, ideas, or reflections kept regularly for private use.
         It is a personal document that can be used to track your progress towards goals, document your experiences, or simply reflect on your thoughts and feelings.
@@ -33,7 +32,7 @@ export default function LandPage() {
         <div className="footer-content">
         <h1 className="Footer-text">Do Hard Things</h1>
         </div>
-    </>
+    </div>
   
   )
 }
