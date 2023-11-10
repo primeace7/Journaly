@@ -6,7 +6,7 @@ import openai
 import os
 from datetime import datetime, timezone, timedelta
 from .utilities import storage
-from flask import Blueprint, request, redirect, url_for, g
+from flask import Blueprint, request, redirect, url_for, g, url_for
 
 openai.apikey = os.getenv('OPENAI_API_KEY')
 
@@ -18,7 +18,7 @@ def generate_insight():
     """generate insights for a user's entries using
     chatgpt api and return them"""
     if not g.user:
-        return redirect(url_for('login'))
+        return redirect(url_for('app_views.login_handler.login'))
 
     if request.method == 'GET':
         start_date = get_start_date()

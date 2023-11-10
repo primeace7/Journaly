@@ -2,17 +2,18 @@
 """Implementation of /<username> endpoint that allows a user to modify
 their data"""
 
-from flask import request, g, session, Blueprint
+from flask import request, g, session, Blueprint, redirect, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
 from .utilities import fetch_user
 
-update_user_handler = Blueprint('update_user_view', __name__)
+update_user_handler = Blueprint('update_user_handler', __name__)
 
 @update_user_handler.route('/<username>', methods=['PATCH'])
 def update_user(username):
     """update a user's data"""
     if not g.user:
-        return redirect(url_for('login'))
+        from .bp_login import login_handler
+        return redirect(url_for('app_views.login_handler.login'))
 
     data = request.json
 
@@ -26,4 +27,4 @@ def update_user(username):
             setattr(user, item)
 
     session.clear()
-    return redirect(url_for('login'))
+    return redirect(url_for('app_views.login_handler.login'))

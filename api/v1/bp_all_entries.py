@@ -4,7 +4,7 @@
 from flask import g, Blueprint, redirect, url_for
 from .utilities import storage
 
-all_entries_handler = Blueprint('all_entries_view', __name__)
+all_entries_handler = Blueprint('all_entries_handler', __name__)
 
 @all_entries_handler.route('/<username>/all-entries')
 
@@ -13,7 +13,7 @@ def all_entries(username):
        see all their entries so far
     """
     if not g.user:
-        return redirect(url_for('login'))
+        return redirect(url_for('app_views.login_handler.login'))
 
     all_user_entries = storage.all_user_entries(g.user.id)
     all_entry_objs = [list(obj)[0] for obj in all_user_entries]

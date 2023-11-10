@@ -5,7 +5,7 @@ from flask import request, render_template, g, session, Blueprint
 from werkzeug.security import check_password_hash
 from .utilities import fetch_user
 
-login_handler = Blueprint('login_view', __name__, url_prefix='/login')
+login_handler = Blueprint('login_handler', __name__, url_prefix='/login')
 
 @login_handler.route('/', methods=['POST'])
 def login():
@@ -20,12 +20,19 @@ def login():
         user = fetch_user(username_email) #fetch the user from database
         if not user:
             error = {'Error': 'Invalid username or email'}, 401
+            return error
         elif not check_password_hash(user.password, password):
             error = {'Error': 'Invalid password'}, 401
+            return error
 
         if not error:
             session.clear()
             session['user_id'] = user.id
-            return redirect(url_for('journal_area', username=user.username))
+            return redirect(
+                url_for(
+                    'app_views.journal_area_handler.journal_area',
+                    username=user.username
+                )
+            )
 
         return {'Error': 'There was an error'}, 405

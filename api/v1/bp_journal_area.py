@@ -6,7 +6,7 @@ from flask import request, g, Blueprint, redirect, url_for
 from .utilities import storage
 from datetime import timedelta, datetime, timezone
 
-journal_area_handler = Blueprint('journal_area_view', __name__)
+journal_area_handler = Blueprint('journal_area_handler', __name__)
 
 @journal_area_handler.route('/<username>/entries',
                          methods=['GET', 'POST', 'PATCH', 'DELETE'])
@@ -16,7 +16,7 @@ def journal_area(username):
        can see their entries for the last 30 days and make new ones
     """
     if not g.user:
-        return redirect(url_for('login'))
+        return redirect(url_for('app_views.login_handler.login'))
 
     if request.method == 'GET':
         current_month_journals = current_month_journals(g.user)
@@ -40,6 +40,7 @@ def journal_area(username):
         storage.add(entry_to_modify)
         storage.save()
         storage.close()
+        return {'success': 'OK'}
 
     elif request.method == 'DELETE':
         data = request.json
@@ -47,6 +48,7 @@ def journal_area(username):
         storage.delete(entry_to_delete)
         storage.save()
         storage.close()
+        return {'success': 'OK'}
 
 
 def current_month_journals(user_obj):

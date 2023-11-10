@@ -5,7 +5,7 @@ their insights so far"""
 from flask import g, Blueprint, redirect, url_for
 from .utilities import storage
 
-all_insights_handler = Blueprint('all_insights_view', __name__)
+all_insights_handler = Blueprint('all_insights_handler', __name__)
 
 @all_insights_handler.route('/<username>/all-insights')
 
@@ -14,7 +14,7 @@ def all_insights(username):
        see all their insights so far
     """
     if not g.user:
-        return redirect(url_for('login'))
+        return redirect(url_for('app_views.login_handler.login'))
 
     all_user_insights = storage.all_user_insights(g.user.id)
     all_insight_objs = [list(obj)[0] for obj in all_user_insightss]
