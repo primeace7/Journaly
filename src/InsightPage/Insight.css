@@ -1,0 +1,20 @@
+/* Style the Insight Page */
+.insight-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  button {
+    padding: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  
+  .insight-result {
+    margin-top: 20px;
+  }
+  
+  /* Add more styling as needed */
+  

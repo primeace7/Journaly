@@ -25,7 +25,7 @@ export default function Login() {
     e.preventDefault();
     
     // Send a POST request to your login endpoint with the form data
-    axios.post('https://your-api-url.com/login-endpoint', formData)
+    axios.post('http://52.3.241.176:5000/api/v1/login', formData)
       .then((response) => {
         // Successful login, handle the response (e.g., store user data or token)
         // Redirect to the user's dashboard or another page
